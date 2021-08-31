@@ -1,0 +1,23 @@
+.label{
+    font-size: medium;
+    font-weight: bold;
+}
+.value{
+    font-size: medium;
+}
+.header{
+    font-size:x-large;
+    font-weight: bold;
+}
+.custom-box {
+    text-align: center;
+    background-color: #f4f6f9;
+    padding: 1rem;
+    border: 1px solid #d8dde6;
+}
+.custom-box-header {
+    text-align: left;
+    background-color: #adadaa59;
+    padding: 1rem;
+    border: 1px solid #d8dde6;
+}

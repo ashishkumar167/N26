@@ -1,0 +1,72 @@
+<!-- sldsValidatorIgnore -->
+<template>
+	<lightning-card if:true={productDetail} >
+	
+		<div class="slds-box slds-m-around_medium">
+			<div class="custom-box-header slds-theme_shade slds-theme_alert-texture">
+				<lightning-icon icon-name="standard:product" size="medium">
+				</lightning-icon>
+				<lightning-formatted-text value={headerValue} class="header">
+				</lightning-formatted-text>
+			</div>
+			
+			<lightning-layout multiple-rows>
+				<lightning-layout-item size="6" medium-device-size="6" padding="around-small">
+					<div class="custom-box">
+						<lightning-formatted-text value={productDetailLabel} class="label">
+						</lightning-formatted-text>
+						<lightning-formatted-text value={productDetail.Product__r.Name} class="value">
+						</lightning-formatted-text>
+					</div>	
+				</lightning-layout-item>
+
+				<lightning-layout-item size="6" medium-device-size="6" padding="around-small">
+					<div class="custom-box">
+						<lightning-formatted-text value={countryCodeLabel} class="label">
+						</lightning-formatted-text>
+						<lightning-formatted-text value={productDetail.Country_Code__r.Name} class="value">
+						</lightning-formatted-text>
+					</div>
+				</lightning-layout-item >
+				
+				<lightning-layout-item size="6" medium-device-size="6" padding="around-small">
+					<div class="custom-box">
+						<lightning-formatted-text value={costPerCalendarMonthLabel} class="label">
+						</lightning-formatted-text>
+						<lightning-formatted-number if:true={productDetail.Is_Cost_per_Calendar_Month__c}
+							value={productDetail.Cost_per_Calendar_Month__c} format-style="currency"
+							currency-code={productDetail.CurrencyIsoCode} currency-display-as="symbol" class="value">
+						</lightning-formatted-number>
+						<lightning-formatted-text if:false={productDetail.Is_Cost_per_Calendar_Month__c} value={NOT_APPLICABLE} class="value">
+						</lightning-formatted-text>
+					</div>	
+				</lightning-layout-item>
+
+				<lightning-layout-item size="6" medium-device-size="6" padding="around-small">
+					<div class="custom-box">
+						<lightning-formatted-text value={atmFeeInOtherCurrenciesLabel} class="label">
+						</lightning-formatted-text>
+						<lightning-formatted-number if:false={productDetail.ATM_Fee_Free__c}
+							value={productDetail.ATM_Fee_in_other_currencies__c} format-style="percent-fixed"
+							maximum-fraction-digits="2" class="value">
+						</lightning-formatted-number>
+						<lightning-formatted-text if:true={productDetail.ATM_Fee_Free__c} value={FREE} class="value">
+						</lightning-formatted-text>
+					</div>	
+				</lightning-layout-item>
+
+				<lightning-layout-item size="6" medium-device-size="6" padding="around-small">
+					<div class="custom-box">
+						<lightning-formatted-text value={cardReplacementCostLabel} class="label">
+						</lightning-formatted-text>
+						<lightning-formatted-number value={productDetail.Card_Replacement_Cost__c}
+							format-style="currency" currency-code={productDetail.CurrencyIsoCode}
+							currency-display-as="symbol" maximum-fraction-digits="2" class="value">
+						</lightning-formatted-number>
+					</div>	
+				</lightning-layout-item>
+
+			</lightning-layout>
+		</div>
+	</lightning-card>
+</template>
